@@ -9,11 +9,38 @@ PrintIntArray(SortRowArr(myarr));*/
 // Задача 56: Задайте прямоугольный двумерный массив. Напишите программу, которая будет находить 
 // строку с наименьшей суммой элементов.
 
-int[,] myarr = GetIntArray(8, 4);
+/*int[,] myarr = GetIntArray(8, 4);
 PrintIntArray(myarr);
 Console.WriteLine();
-Console.WriteLine(IndexSumMin(myarr));
+Console.WriteLine(IndexSumMin(myarr));*/
 
+// Задача 58: Задайте две квадратные матрицы. Напишите программу, которая будет находить произведение двух 
+// матриц.
+
+int[,] myarr1 = GetIntArray(3, 3);
+int[,] myarr2 = GetIntArray(3, 3);
+PrintIntArray(myarr1);
+Console.WriteLine();
+PrintIntArray(myarr2);
+Console.WriteLine();
+PrintIntArray(MultiplyArr(myarr1, myarr2));
+
+
+int[,] MultiplyArr(int[,] array1, int[,] array2)
+{
+    int[,] result = new int[array1.GetLength(0), array1.GetLength(1)];
+    for (int i = 0; i < array1.GetLength(0); i++)
+    {
+        for (int j = 0; j < array1.GetLength(1); j++)
+        {
+            for (int k = 0; k < array2.GetLength(1); k++)
+            {
+                result[i,k] = result[i,k] + array1[i,j] * array2[j,k];
+            }
+        }
+    }
+    return result;
+}
 
 int IndexSumMin(int[,] array)
 {
@@ -49,7 +76,7 @@ int[,] GetIntArray(int m, int n)
     {
         for (int j = 0; j < n; j++)
         {
-            array[i, j] = new Random().Next(0, 101);
+            array[i, j] = new Random().Next(0, 100);
 
         }
     }
