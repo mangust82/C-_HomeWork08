@@ -1,10 +1,46 @@
 ﻿// Задача 54: Задайте двумерный массив. Напишите программу, которая упорядочит по убыванию элементы 
 // каждой строки двумерного массива.
 
-int[,] myarr = GetIntArray(5, 8);
+/*int[,] myarr = GetIntArray(5, 8);
 PrintIntArray(myarr);
 Console.WriteLine();
-PrintIntArray(SortRowArr(myarr));
+PrintIntArray(SortRowArr(myarr));*/
+
+// Задача 56: Задайте прямоугольный двумерный массив. Напишите программу, которая будет находить 
+// строку с наименьшей суммой элементов.
+
+int[,] myarr = GetIntArray(8, 4);
+PrintIntArray(myarr);
+Console.WriteLine();
+Console.WriteLine(IndexSumMin(myarr));
+
+
+int IndexSumMin(int[,] array)
+{
+    int summin = 0;
+    int minindex = 0;
+    for (int i = 0; i < array.GetLength(0); i++)
+    {
+        int sum = 0;
+        for (int j = 0; j < array.GetLength(1); j++)
+        {
+            sum = sum + array[i,j];
+        }
+        Console.WriteLine(sum);
+        if (i == 0) 
+        {
+            summin = sum;
+            minindex = i;
+        }
+        if (sum < summin)
+        {
+            summin = sum;
+            minindex = i;
+        } 
+        
+    }
+    return minindex;
+}
 
 int[,] GetIntArray(int m, int n)
 {
