@@ -33,9 +33,20 @@ else PrintIntArray(MultiplyArr(myarr1, myarr2));*/
 // Задача 60. ...Сформируйте трёхмерный массив из неповторяющихся двузначных чисел. Напишите программу, которая будет 
 // построчно выводить массив, добавляя индексы каждого элемента.Массив размером 2 x 2 x 2
 
-int[,,] myarr = GetThreeArray(2,2,2);
-PrintThreeArray(myarr);
+/*int[,,] myarr = GetThreeArray(2,2,2);
+PrintThreeArray(myarr);*/
 
+// Задача 62. Напишите программу, которая заполнит спирально массив 4 на 4.
+// Например, на выходе получается вот такой массив:
+// 01 02 03 04
+// 12 13 14 05
+// 11 16 15 06
+// 10 09 08 07
+
+PrintSpiralArray(Snake(4,4));
+
+
+// ***************** Methods *****************************************************************
 
 int[,,] GetThreeArray(int m, int n, int p)
 {
@@ -155,5 +166,60 @@ int[,] SortRowArr(int[,] array)
             }
         }
     }
+    return array;
+}
+
+void PrintSpiralArray(int[,] matr)
+{
+    for (int i = 0; i < matr.GetLength(0); i++)
+    {
+        for (int j = 0; j < matr.GetLength(1); j++)
+        {
+            Console.Write($"{matr[i, j].ToString("000")} ");
+        }
+        Console.WriteLine();
+    }
+}
+
+int[,] Snake(int row, int col)
+{
+    int j = 0; //строки
+    int i = 0; //столбцы
+    int n = 0; //счетчик общего количества элементов
+    int k = 1; //счетчик уменьшения индекса строки столбца при проходе
+    int p = 0; //счетчик уменьшения индекса строки при движении вверх
+    int[,] array = new int[row,col];
+    int M = array.GetLength(1)*array.GetLength(0);
+    while(n < array.GetLength(1)*array.GetLength(0)-1)
+    {
+        
+        for ( ; i < array.GetLength(1)-k ; i++, n++)
+            {
+                if (n >= M) break;
+                array[j,i] = n;
+                
+            }
+        for ( ; j < array.GetLength(0)-k; j++, n++)
+            {
+                if (n >= M) break;
+                array[j,i] = n;
+            }
+        
+        for ( ; i > p; i--, n++)
+            {
+                if (n >= M) break;
+                array[j,i] = n;
+            }
+            
+        for ( ; j >k; j--, n++)
+            {
+                
+                if (n >= M) break;
+                array[j,i] = n;
+            }
+        k++;
+        p++;   
+    }
+    array[j,i] = n;
     return array;
 }
