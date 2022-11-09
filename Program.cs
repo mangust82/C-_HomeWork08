@@ -18,12 +18,17 @@ Console.WriteLine(IndexSumMin(myarr));*/
 // матриц.
 
 int[,] myarr1 = GetIntArray(3, 3);
-int[,] myarr2 = GetIntArray(3, 3);
+int[,] myarr2 = GetIntArray(3, 4);
 PrintIntArray(myarr1);
 Console.WriteLine();
 PrintIntArray(myarr2);
 Console.WriteLine();
-PrintIntArray(MultiplyArr(myarr1, myarr2));
+if (myarr1.GetLength(0) != myarr1.GetLength(1) || myarr2.GetLength(0) != myarr2.GetLength(1) 
+|| myarr1.GetLength(0) != myarr2.GetLength(1) )
+{
+    Console.WriteLine("Матрицы не согласованы");
+}
+else PrintIntArray(MultiplyArr(myarr1, myarr2));
 
 
 int[,] MultiplyArr(int[,] array1, int[,] array2)
