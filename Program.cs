@@ -17,7 +17,7 @@ Console.WriteLine(IndexSumMin(myarr));*/
 // Задача 58: Задайте две квадратные матрицы. Напишите программу, которая будет находить произведение двух 
 // матриц.
 
-int[,] myarr1 = GetIntArray(3, 3);
+/*int[,] myarr1 = GetIntArray(3, 3);
 int[,] myarr2 = GetIntArray(3, 4);
 PrintIntArray(myarr1);
 Console.WriteLine();
@@ -28,8 +28,45 @@ if (myarr1.GetLength(0) != myarr1.GetLength(1) || myarr2.GetLength(0) != myarr2.
 {
     Console.WriteLine("Матрицы не согласованы");
 }
-else PrintIntArray(MultiplyArr(myarr1, myarr2));
+else PrintIntArray(MultiplyArr(myarr1, myarr2));*/
 
+// Задача 60. ...Сформируйте трёхмерный массив из неповторяющихся двузначных чисел. Напишите программу, которая будет 
+// построчно выводить массив, добавляя индексы каждого элемента.Массив размером 2 x 2 x 2
+
+int[,,] myarr = GetThreeArray(2,2,2);
+PrintThreeArray(myarr);
+
+
+int[,,] GetThreeArray(int m, int n, int p)
+{
+    int[,,] array = new int[m, n, p];
+    for (int i = 0; i < m; i++)
+    {
+        for (int j = 0; j < n; j++)
+        {
+            for (int k=0; k < p; k++)
+            {
+                array[i, j, k] = new Random().Next(10, 100);
+            }
+        }
+    }
+    return array;
+}
+
+void PrintThreeArray(int [,,] array)
+{
+    for (int i = 0; i < array.GetLength(0); i++)
+    {
+        for (int j = 0; j < array.GetLength(1); j++)
+        {
+            for (int k = 0; k < array.GetLength(2); k++)
+            {
+                Console.Write($"{array[i,j,k]}({i},{j},{k}) ");
+            }
+        }
+        Console.WriteLine();
+    }
+}
 
 int[,] MultiplyArr(int[,] array1, int[,] array2)
 {
