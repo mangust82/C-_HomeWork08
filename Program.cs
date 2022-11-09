@@ -43,10 +43,39 @@ PrintThreeArray(myarr);*/
 // 11 16 15 06
 // 10 09 08 07
 
-PrintSpiralArray(Snake(4,4));
+/*PrintSpiralArray(Snake(4,4));*/
+
+// Задача 59: Отсортировать нечетные столбцы массива по возрастанию. Вывести массив изначальный и массив с 
+// отсортированными нечетными столбцами
+
+int[,] myarr = GetIntArray(5, 8);
+PrintIntArray(myarr);
+Console.WriteLine();
+PrintIntArray(SortColArr(myarr));
 
 
 // ***************** Methods *****************************************************************
+
+int[,] SortColArr(int[,] array)
+{
+   int temp = 0;
+   for(int j=1; j<array.GetLength(1); j+=2)
+    {
+        for(int i=0; i<array.GetLength(0); i++)
+        {
+            for(int k = i + 1; k < array.GetLength(0); k++)
+            {
+                if (array[i,j] > array[k,j])
+                {
+                    temp = array[i,j];
+                    array[i,j] = array[k,j];
+                    array[k,j] = temp;
+                }
+            }
+        }
+    }
+    return array;
+}
 
 int[,,] GetThreeArray(int m, int n, int p)
 {
